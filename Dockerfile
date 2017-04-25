@@ -9,10 +9,13 @@ RUN set -x && \
  apt-get install -y --no-install-recommends software-properties-common && \
  # use WebUpd8 PPA
  add-apt-repository ppa:webupd8team/java -y && \
- apt-get update -y && \
- # automatically accept the Oracle license
- echo oracle-java8-installer shared/accepted-oracle-license-v1–1 select true | /usr/bin/debconf-set-selections && \
- apt-get install -y --no-install-recommends oracle-java8-installer && \
+ apt-get update -y
+
+# automatically accept the Oracle license
+RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
+RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
+
+RUN apt-get install -y --no-install-recommends oracle-java8-installer && \
  apt-get install -y --no-install-recommends oracle-java8-set-default && \
 
  # clean up
