@@ -8,8 +8,8 @@ ENV NODEJS_VERSION=5.6.0 \
 
 RUN sudo apt-get update
 
-RUN sudo apt-get install nodejs && \
- sudo apt-get install npm && \
+RUN sudo apt-get install -y nodejs && \
+ sudo apt-get install -y npm && \
  sudo apt-get clean
 
 ### Python 2.7 & Git
