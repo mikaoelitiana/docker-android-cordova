@@ -10,14 +10,7 @@ RUN sudo apt-get update
 
 RUN sudo apt-get install -y nodejs && \
  sudo apt-get install -y npm && \
- sudo apt-get clean
-
-### Python 2.7 & Git
-RUN sudo apt-get -qq update && \
- sudo apt-get -qq install -y --no-install-recommends git python && \
- sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- sudo apt-get purge --auto-remove -y && \
- sudo apt-get autoremove -y && \
+ sudo apt-get install -y git && \
  sudo apt-get clean
 
 # install cordova, bower and grunt
