@@ -17,10 +17,9 @@ RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true" 
 
 RUN apt-get install -y --no-install-recommends oracle-java8-installer && \
  apt-get install -y --no-install-recommends oracle-java8-set-default && \
-
  # clean up
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge -y --auto-remove software-properties-common && \
+ apt-get purge --auto-remove -y software-properties-common && \
  apt-get autoremove -y && \
  apt-get clean
 
@@ -38,8 +37,7 @@ ENV ANDROID_SDK_URL=”https://dl.google.com/android/android-sdk_r24.4.1-linux.t
 
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 
-RUN dpkg — add-architecture i386 && \
- apt-get -qq update && \
+RUN apt-get -qq update && \
  apt-get -qq install -y --no-install-recommends curl libstdc++6:i386 zlib1g:i386 && \
  # Installs Android SDK
  curl -sL ${ANDROID_SDK_URL} | tar xz -C /opt && \
@@ -48,7 +46,7 @@ RUN dpkg — add-architecture i386 && \
  chown -R root:root $ANDROID_HOME && \
  # clean up
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge -y --auto-remove curl && \
+ apt-get purge --auto-remove -y curl && \
  apt-get autoremove -y && \
  apt-get clean
 
@@ -63,7 +61,7 @@ RUN apt-get -qq update && \
  curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz — strip-components=1 && \
  cd ../.. && \
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge -y --auto-remove curl && \
+ apt-get purge --auto-remove -y curl && \
  apt-get autoremove -y && \
  apt-get clean
 
@@ -71,7 +69,7 @@ RUN apt-get -qq update && \
 RUN apt-get -qq update && \
  apt-get -qq install -y --no-install-recommends git python && \
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge -y --auto-remove && \
+ apt-get purge --auto-remove -y && \
  apt-get autoremove -y && \
  apt-get clean
  # install cordova, bower and grunt
