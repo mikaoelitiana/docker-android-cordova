@@ -38,7 +38,7 @@ ENV ANDROID_SDK_URL=”https://dl.google.com/android/android-sdk_r24.4.1-linux.t
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 
 RUN apt-get -qq update && \
- apt-get -qq install -y --no-install-recommends curl libstdc++6:i386 zlib1g:i386 && \
+ apt-get -qq install -y --no-install-recommends curl libstdc++6 zlib1g && \
  # Installs Android SDK
  curl -sL ${ANDROID_SDK_URL} | tar xz -C /opt && \
  echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION} && \
