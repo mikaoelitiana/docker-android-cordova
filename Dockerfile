@@ -8,14 +8,8 @@ ENV NODEJS_VERSION=5.6.0 \
 
 RUN sudo apt-get update
 
-RUN sudo apt-get -qq install -y --no-install-recommends curl ca-certificates && \
- mkdir -p /opt/node && \
- cd /opt/node && \
- curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz — strip-components=1 && \
- cd ../.. && \
- rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- sudo apt-get purge --auto-remove -y curl && \
- sudo apt-get autoremove -y && \
+RUN sudo apt-get install nodejs && \
+ sudo apt-get install npm && \
  sudo apt-get clean
 
 ### Python 2.7 & Git
