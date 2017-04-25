@@ -20,7 +20,7 @@ RUN apt-get install -y --no-install-recommends oracle-java8-installer && \
 
  # clean up
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge -y — auto-remove software-properties-common && \
+ apt-get purge -y --auto-remove software-properties-common && \
  apt-get autoremove -y && \
  apt-get clean
 
@@ -48,7 +48,7 @@ RUN dpkg — add-architecture i386 && \
  chown -R root:root $ANDROID_HOME && \
  # clean up
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge -y — auto-remove curl && \
+ apt-get purge -y --auto-remove curl && \
  apt-get autoremove -y && \
  apt-get clean
 
@@ -63,7 +63,7 @@ RUN apt-get -qq update && \
  curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz — strip-components=1 && \
  cd ../.. && \
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge -y — auto-remove curl && \
+ apt-get purge -y --auto-remove curl && \
  apt-get autoremove -y && \
  apt-get clean
 
@@ -71,7 +71,7 @@ RUN apt-get -qq update && \
 RUN apt-get -qq update && \
  apt-get -qq install -y --no-install-recommends git python && \
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge -y — auto-remove && \
+ apt-get purge -y --auto-remove && \
  apt-get autoremove -y && \
  apt-get clean
  # install cordova, bower and grunt
