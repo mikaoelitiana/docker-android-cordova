@@ -6,27 +6,25 @@ FROM codenvy/ubuntu_android
 ENV NODEJS_VERSION=5.6.0 \
  PATH=$PATH:/opt/node/bin
 
-RUN apt-get -qq update && \
- apt-get -qq install -y --no-install-recommends curl ca-certificates && \
+RUN sudo sudo apt-get -qq update && \
+ sudo apt-get -qq install -y --no-install-recommends curl ca-certificates && \
  mkdir -p /opt/node && \
  cd /opt/node && \
  curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz — strip-components=1 && \
  cd ../.. && \
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge --auto-remove -y curl && \
- apt-get autoremove -y && \
- apt-get clean
+ sudo apt-get purge --auto-remove -y curl && \
+ sudo apt-get autoremove -y && \
+ sudo apt-get clean
 
 ### Python 2.7 & Git
-RUN apt-get -qq update && \
- apt-get -qq install -y --no-install-recommends git python && \
- rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
- apt-get purge --auto-remove -y && \
- apt-get autoremove -y && \
- apt-get clean
+RUN sudo apt-get -qq update && \
+ sudo apt-get -qq install -y --no-install-recommends git python && \
+ sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+ sudo apt-get purge --auto-remove -y && \
+ sudo apt-get autoremove -y && \
+ sudo apt-get clean
 
 # install cordova, bower and grunt
-RUN npm install -g cordova && \
- npm install -g bower && \
- npm install -g grunt-cli && \
+RUN sudo npm install -g cordova bower grunt-cli && \
  npm cache clean
