@@ -1,6 +1,6 @@
 # From https://medium.com/@cnadeau_/docker-as-a-cordova-android-application-builder-9e292298c08e
 # Creates an environement containing java 8, android SDKs 23/24, node 5.6.0, python 2.7, git, cordova and ionic. 
-FROM ubuntu-debootstrap:wily
+FROM ubuntu
 
 ### JAVA
 RUN set -x && \
