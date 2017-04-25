@@ -6,7 +6,7 @@ FROM codenvy/ubuntu_android
 ENV NODEJS_VERSION=5.6.0 \
  PATH=$PATH:/opt/node/bin
 
-RUN sudo sudo apt-get -qq update && \
+RUN sudo apt-get -qq update && \
  sudo apt-get -qq install -y --no-install-recommends curl ca-certificates && \
  mkdir -p /opt/node && \
  cd /opt/node && \
