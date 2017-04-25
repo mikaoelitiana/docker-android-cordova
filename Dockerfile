@@ -6,8 +6,9 @@ FROM codenvy/ubuntu_android
 ENV NODEJS_VERSION=5.6.0 \
  PATH=$PATH:/opt/node/bin
 
-RUN sudo apt-get -qq update && \
- sudo apt-get -qq install -y --no-install-recommends curl ca-certificates && \
+RUN sudo apt-get update
+
+RUN sudo apt-get -qq install -y --no-install-recommends curl ca-certificates && \
  mkdir -p /opt/node && \
  cd /opt/node && \
  curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz — strip-components=1 && \
