@@ -8,9 +8,10 @@ ENV NODEJS_VERSION=5.6.0 \
 
 RUN sudo apt-get update
 
-RUN sudo apt-get install -y nodejs && \
- sudo apt-get install -y npm && \
- sudo apt-get install -y git && \
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && \
+ sudo apt-get install -y nodejs
+
+RUN sudo apt-get install -y git && \
  sudo apt-get clean
 
 # install cordova, bower and grunt
