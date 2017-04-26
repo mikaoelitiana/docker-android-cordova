@@ -1,6 +1,6 @@
 # From https://medium.com/@cnadeau_/docker-as-a-cordova-android-application-builder-9e292298c08e
 # Creates an environement containing java 8, android SDKs 23/24, node 5.6.0, python 2.7, git, cordova and ionic.
-FROM cjacekmarchwicki/android:java7-8
+FROM jacekmarchwicki/android:java7-8
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x |  bash - && \
  apt-get install -y --no-install-recommends nodejs git && \
