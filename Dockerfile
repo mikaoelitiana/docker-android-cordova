@@ -16,3 +16,6 @@ RUN sudo apt-get install -y nodejs && \
 # install cordova, bower and grunt
 RUN sudo npm install -g cordova bower grunt-cli && \
  npm cache clean
+
+RUN sudo chown -R user:user ~/tmp && \
+  npm config set tmp /tmp
